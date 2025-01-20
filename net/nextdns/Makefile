@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nextdns
-PKG_VERSION:=1.42.0
+PKG_VERSION:=1.44.4
 PKG_RELEASE:=1
 
 PKG_SOURCE:=nextdns-$(PKG_VERSION).tar.gz
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
 PKG_SOURCE_URL:=https://codeload.github.com/nextdns/nextdns/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=893692bea9015116d6ce610c94dccf744f3aa29aeb716a15cca17dd6e6b837c1
+PKG_HASH:=00060ddffa669bf67b468dc5fc1a583e96b95d8858b18fb9ee05b60209bdbf2a
 
 PKG_MAINTAINER:=Olivier Poitrey <rs@nextdns.io>
 PKG_LICENSE:=MIT
@@ -34,6 +34,7 @@ define Package/nextdns
   SECTION:=net
   CATEGORY:=Network
   TITLE:=NextDNS DNS over HTTPS Proxy
+  SUBMENU:=IP Addresses and Names
   URL:=https://github.com/nextdns/nextdns
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
 endef

@@ -8,12 +8,15 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=node
-PKG_VERSION:=v20.11.1
-PKG_RELEASE:=1
+PKG_VERSION:=22.11.0
+PKG_RELEASE:=4
+NODE_MODULE_VERSION:=127
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://nodejs.org/dist/$(PKG_VERSION)
-PKG_HASH:=77813edbf3f7f16d2d35d3353443dee4e61d5ee84d9e3138c7538a3c0ca5209e
+PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://nodejs.org/dist/v$(PKG_VERSION)
+PKG_HASH:=24e5130fa7bc1eaab218a0c9cb05e03168fa381bb9e3babddc6a11f655799222
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-v$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/$(PKG_NAME)-v$(PKG_VERSION)
 
 PKG_MAINTAINER:=Hirokazu MORIKAWA <morikw2@gmail.com>, Adrian Panella <ianchi74@outlook.com>
 PKG_LICENSE:=MIT
@@ -40,6 +43,7 @@ define Package/node
   DEPENDS:=@HAS_FPU @(i386||x86_64||arm||aarch64) \
 	   +libstdcpp +libopenssl +zlib +libnghttp2 \
 	   +libcares +libatomic +NODEJS_ICU_SYSTEM:icu +NODEJS_ICU_SYSTEM:icu-full-data
+  ABI_VERSION:=$(NODE_MODULE_VERSION)
 endef
 
 define Package/node/description

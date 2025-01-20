@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=squid
-PKG_VERSION:=6.7
-PKG_RELEASE:=2
+PKG_VERSION:=6.11
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=http://www2.pl.squid-cache.org/Versions/v6/ \
 	http://www.squid-cache.org/Versions/v6/
-PKG_HASH:=e14daa4eae41925d1ae3f08e64439a6aaa3011bdced686628b8de697d5ab8428
+PKG_HASH:=b6e60c08429314287925331b3da6c03b7d3c35b7e03319f78edb8bad6fc68899
 
 PKG_MAINTAINER:=Marko Ratkaj <markoratkaj@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later
@@ -69,6 +69,7 @@ endef
 
 CONFIGURE_ARGS += \
 	BUILDCXX=$(HOSTCXX_NOCACHE) \
+	BUILDCXXFLAGS="$(HOST_CXXFLAGS) $(HOST_CPPFLAGS) -std=c++17" \
 	--datadir=/usr/share/squid \
 	--libexecdir=/usr/lib/squid \
 	--sysconfdir=/etc/squid \
